@@ -1,13 +1,13 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
-import { SignInFlow } from "../types";
-import { useState } from "react";
-import { TriangleAlert } from "lucide-react";
-import { useAuthActions } from "@convex-dev/auth/react";
+import {Button} from "@/components/ui/button";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import {Input} from "@/components/ui/input";
+import {Separator} from "@/components/ui/separator";
+import {FcGoogle} from "react-icons/fc";
+import {FaGithub} from "react-icons/fa";
+import {SignInFlow} from "../types";
+import {useState} from "react";
+import {TriangleAlert} from "lucide-react";
+import {useAuthActions} from "@convex-dev/auth/react";
 
 
 interface SignUpCardProps {
@@ -15,8 +15,8 @@ interface SignUpCardProps {
 };
 
 
-export const SignUpCard = ({ setState }: SignUpCardProps) => {
-    const { signIn } = useAuthActions();
+export const SignUpCard = ({setState}: SignUpCardProps) => {
+    const {signIn} = useAuthActions();
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -34,7 +34,7 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
         }
 
         setPending(true);
-        signIn("password", { name, email, password, flow: "signUp" })
+        signIn("password", {name, email, password, flow: "signUp"})
             .catch(() => {
                 setError("Something went wrong.");
             })
@@ -64,8 +64,9 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
                 </CardDescription>
             </CardHeader>
             {!!error && (
-                <div className="bg-destructive/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
-                    <TriangleAlert className="size-4" />
+                <div
+                    className="bg-destructive/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
+                    <TriangleAlert className="size-4"/>
                     <p>{error}</p>
                 </div>
             )}
@@ -106,7 +107,7 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
                         Continue
                     </Button>
                 </form>
-                <Separator />
+                <Separator/>
                 <div className="flex flex-col gap-y-2.5">
                     <Button
                         disabled={pending}
@@ -115,7 +116,7 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
                         size="lg"
                         className="w-full relative"
                     >
-                        <FcGoogle className="size-5 absolute top-3 left-2.5" />
+                        <FcGoogle className="size-5 absolute top-3 left-2.5"/>
                         Continue with Google
                     </Button>
                     <Button
@@ -125,12 +126,13 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
                         size="lg"
                         className="w-full relative"
                     >
-                        <FaGithub className="size-5 absolute top-3 left-2.5" />
+                        <FaGithub className="size-5 absolute top-3 left-2.5"/>
                         Continue with Github
                     </Button>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                    Already have an account? <span onClick={() => setState("signIn")} className="text-sky-700 hover:underline cursor-pointer">Sign In</span>
+                    Already have an account? <span onClick={() => setState("signIn")}
+                                                   className="text-sky-700 hover:underline cursor-pointer">Sign In</span>
                 </p>
             </CardContent>
         </Card>
